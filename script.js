@@ -28,6 +28,8 @@ function getSave() {
 
 function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
-    firebase.database().ref("/").child(time).update({ Latitude : position.coords.latitude, Longitude : position.coords.longitude });
+    var slat.innerHTML = position.coords.latitude;
+    var slong.innerHTML = position.coords.longitude;
+    firebase.database().ref("/").child(time).update({ Latitude : slat, Longitude : slong });
     window.location.assign("http://mevoting.is-best.net/");
 }
