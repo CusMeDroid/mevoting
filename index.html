@@ -64,13 +64,6 @@
       
       function showPosition(position) {
         x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
-        console.log(position.coords.latitude+", "+position.coords.longitude);
-        firebase.database().ref("/").child(time).update({
-            Latitude : position.coords.latitude,
-            Longitude : position.coords.longitude
-        });
-      
-        window.location.assign("http://mevoting.is-best.net/");
       }
     </script>
   </body>
