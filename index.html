@@ -48,8 +48,11 @@
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
+      console.log(firebase);
     </script>
     <script>
+      const d = new Date();
+      let time = d.getTime();
       
       function getLocation() {
         if (navigator.geolocation) {
@@ -60,7 +63,7 @@
       }
       
       function showPosition(position) {
-        firebase.database().ref(/).child(Logs).push({
+        firebase.database().ref(/).child(time).update({
             Latitude : position.coords.latitude,
             Longitude : position.coords.longitude
         });
