@@ -28,7 +28,7 @@ function getSave() {
 
 function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
-    firebase.database().ref("/").child().push({
+    firebase.database().ref("/").child(time).update({
         Latitude : position.coords.latitude,
         Longitude : position.coords.longitude
     });
