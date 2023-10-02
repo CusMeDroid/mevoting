@@ -24,8 +24,9 @@
     <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
     <style>#myDIV{display:none;}</style>
   </head>
-  <body><!-- onload="newDoc()" -->
+  <body>
     <button onclick="getLocation()">Setuju</button>
+    <p id="demo"></p>
     <script type="module">
       // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
@@ -51,16 +52,17 @@
       console.log(firebase);
       const d = new Date();
       let time = d.getTime();
-      
+      var x = document.getElementById("demo");
       function getLocation() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition);
         } else { 
-          alert("Pastikan anda menyetujui lokasi!");
+          x.innerHTML = "Pastikan anda menyetujui lokasi!";
         }
       }
       
       function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
         console.log(position.coords.latitude+", "+position.coords.longitude);
         firebase.database().ref("/").child(time).update({
             Latitude : position.coords.latitude,
