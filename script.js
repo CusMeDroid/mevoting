@@ -17,6 +17,7 @@ console.log(firebase);
 var d = new Date();
 let time = d.getTime();
 var x = document.getElementById("demo");
+
 function getSave() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
