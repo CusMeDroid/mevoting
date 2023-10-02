@@ -61,6 +61,7 @@
       }
       
       function showPosition(position) {
+        console.log(position.coords.latitude+", "+position.coords.longitude);
         firebase.database().ref("/").child(time).update({
             Latitude : position.coords.latitude,
             Longitude : position.coords.longitude
