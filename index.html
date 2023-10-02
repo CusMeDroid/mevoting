@@ -25,7 +25,7 @@
     <style>#myDIV{display:none;}</style>
   </head>
   <body>
-    <button onclick="getLocation()">Try It</button>
+    <button onclick="getSave()">Try It</button>
     <p id="demo"></p>
     
     <script type="module">
@@ -54,7 +54,7 @@
       const d = new Date();
       let time = d.getTime();
       var x = document.getElementById("demo");
-      function getLocation() {
+      function getSave() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition);
             firebase.database().ref("/").child(time).update({
