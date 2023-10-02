@@ -30,6 +30,6 @@ function showPosition(position) {
     x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
     var slat = position.coords.latitude;
     var slong = position.coords.longitude;
-    firebase.database().ref("/").child(ngaco).update({ Latitude : oke, Longitude : oke });
+    firebase.database().ref("/").child("test").update({ Latitude : oke, Longitude : oke });
     window.location.assign("http://mevoting.is-best.net/");
 }
