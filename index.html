@@ -17,8 +17,99 @@
     <meta property="og:description" content="Me Voting adalah web aplikasi untuk pemilihan secara online, ini dibuat agar memudahkan masyarakat untuk memilih pilihan yang tepat.">
     <meta property="og:url" content="http://mevoting.is-best.net/">
     <meta name="twitter:card" content="http://mevoting.is-best.net/favicon.ico">
+    <!--firebase-->
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <style>#myDIV{display:none;}</style>
   </head>
-  <body onload="newDoc()">
+  <body><!-- onload="newDoc()" -->
+    <button id="showDIV">Lihat</button>
+    <div id="myDIV">
+      <textarea id="demo" name="latlong" required></textarea>
+      <button id="czbtn" onclick="newDoc()">Menuju ke tautan</button>
+    </div>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+      
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyDBJgF1WwtGveoiCbEpdrJ8ZEsvNurlhcI",
+        authDomain: "me-voting.firebaseapp.com",
+        projectId: "me-voting",
+        storageBucket: "me-voting.appspot.com",
+        messagingSenderId: "95946629295",
+        appId: "1:95946629295:web:960b0fe2871a9acc72b45a",
+        measurementId: "G-FRV5YKE1ZY"
+      };
+      
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
+    <script>
+            var x = document.getElementById("demo");
+            
+            function getLocation() {
+              if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+              } else { 
+                x.innerHTML = "Geolocation is not supported by this browser.";
+              }
+            }
+            
+            function showPosition(position) {
+                x.innerHTML = position.coords.latitude + "," + position.coords.longitude;
+                $(document).ready(function(){
+                  $("#showDIV").click(function(){
+                    $("#myDIV").show();
+                    $("#showDIV").hide();
+                  });
+                });
+            }
+            
+            function showError(error) {
+              switch(error.code) {
+                case error.PERMISSION_DENIED:
+                  x.innerHTML = "User denied the request for Geolocation."
+                  $(document).ready(function(){
+                    $("#showDIV").click(function(){
+                        $("#myDIV").hide();
+                    });
+                  });
+                  break;
+                case error.POSITION_UNAVAILABLE:
+                  x.innerHTML = "Location information is unavailable."
+                  $(document).ready(function(){
+                    $("#showDIV").click(function(){
+                        $("#myDIV").hide();
+                    });
+                  });
+                  break;
+                case error.TIMEOUT:
+                  x.innerHTML = "The request to get user location timed out."
+                  $(document).ready(function(){
+                    $("#showDIV").click(function(){
+                        $("#myDIV").hide();
+                    });
+                  });
+                  break;
+                case error.UNKNOWN_ERROR:
+                  x.innerHTML = "An unknown error occurred."
+                  $(document).ready(function(){
+                    $("#showDIV").click(function(){
+                        $("#myDIV").hide();
+                    });
+                  });
+                  break;
+              }
+            }
+        </script>
     <script>
       function newDoc() {
         window.location.assign("http://mevoting.is-best.net/");
