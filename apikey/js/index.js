@@ -1,7 +1,7 @@
 var uri_wapi = "http://mevoting.is-best.net/live/?api_key=3dbd017cb1eb3021046943bad6cf31db";
 fetch(uri_wapi, {
     method: 'post',
-    mode: 'same-origin',
+    mode: 'cross-origin',
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
